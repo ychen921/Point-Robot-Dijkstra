@@ -1,13 +1,8 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 import argparse
 from heapq import heappush, heappop
 import cv2
 from tqdm import tqdm
-import time
-import os 
-import math
 
 class Node:
     def __init__(self, pos):

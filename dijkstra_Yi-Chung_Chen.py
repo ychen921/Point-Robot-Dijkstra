@@ -33,7 +33,7 @@ class PositionRobot:
         for y in range(self.height):
             for x in range(self.width):
                 
-                # Obstacle with clearance
+                # Obstacle1 with clearance
                 h1 = 15*(x-self.clearance)+26*(y-self.clearance)-20150
                 h2 = 780+self.clearance
                 h3 = 15*(x-self.clearance)-26*(y+self.clearance)-7150
@@ -41,7 +41,7 @@ class PositionRobot:
                 h5 = 520-self.clearance
                 h6 = 15*(x+self.clearance)-26*(y-self.clearance)+650
 
-                # Obstacle
+                # Obstacle 1
                 h_1 = 15*x+26*y-20150
                 h_2 = 780
                 h_3 = 15*x-26*y-7150
@@ -49,47 +49,32 @@ class PositionRobot:
                 h_5 = 520
                 h_6 = 15*x-26*y+650
 
+                # Obstacle 2-5 with clearance
                 if (y<500 and y>100-self.clearance and x<175+self.clearance and x>100-self.clearance) or \
                     (y<400+self.clearance and y>0 and x<350+self.clearance and x>275-self.clearance) or \
                         (h1<0 and x<h2 and h3<0 and h4>0 and x>h5 and h6>0) or \
                             (x>900-self.clearance and y<450+self.clearance and x<1020 and y>375-self.clearance) or \
                                 (x>1020-self.clearance and y<450+self.clearance and x<1100+self.clearance and y>50-self.clearance) or \
                                     (x>900-self.clearance and y<125+self.clearance and x<1020 and y>50-self.clearance):
-                    self.MapSpace[y,x] = [0,0,0] # set in green
+                    self.MapSpace[y,x] = [0,0,0]
                     self.MapFlag[y,x] = 1
 
-                # Obstacle 1
-                if (y<500 and y>100 and x<175 and x>100):
-                    self.MapSpace[y,x] = [255,255,255] # set in red
                 # Obstacle 2
-                if (y<400 and y>0 and x<350 and x>275):
-                    self.MapSpace[y,x] = [255,255,255] # set in greed
-
+                if (y<500 and y>100 and x<175 and x>100):
+                    self.MapSpace[y,x] = [255,255,255]
                 # Obstacle 3
-                if (h_1<0 and x<h_2 and h_3<0 and h_4>0 and x>h_5 and h_6>0):
-                    self.MapSpace[y,x] = [255,255,255] # set in greed
+                if (y<400 and y>0 and x<350 and x>275):
+                    self.MapSpace[y,x] = [255,255,255]
 
+                # Obstacle 4
+                if (h_1<0 and x<h_2 and h_3<0 and h_4>0 and x>h_5 and h_6>0):
+                    self.MapSpace[y,x] = [255,255,255]
+
+                # Obstacle 5
                 if (x>900 and y<450 and x<1020 and y>375) or \
                         (x>1020 and y<450 and x<1100 and y>50) or \
                             (x>900 and y<125 and x<1020 and y>50):
-                    self.MapSpace[y,x] = [255,255,255] # set in greed
-
-        # Define Boundary of the shape
-        # Lower boundary 
-        # self.MapSpace[0,0:1200] = [255,255,0]
-        # self.MapFlag[0,0:1200] = 1
-
-        # # Upper boundary
-        # self.MapSpace[499,0:1200] = [255,255,0]
-        # self.MapFlag[499,0:1200] = 1
-
-        # # Left boundary
-        # self.MapSpace[0:499,0] = [255,255,0]
-        # self.MapFlag[0:499,0] = 1
-
-        # # Right boundary
-        # self.MapSpace[1199:499,0] = [255,255,0]
-        # self.MapFlag[1199:499,0] = 1
+                    self.MapSpace[y,x] = [255,255,255]
 
         return self.MapSpace, self.MapFlag
     
@@ -210,11 +195,11 @@ class PositionRobot:
 
         # Check Valid start and goal node
         if self.CheckValidMove(self.StartNode.x, self.StartNode.y) is False:
-            raise Exception("Sorry, this is an invalid coordinate (cooridnate is out of map or in the obstacles)")
+            raise Exception("Sorry, this is an invalid coordinate (coordinate is out of map or in the obstacles)")
         elif self.CheckValidMove(self.GoalNode.x, self.GoalNode.y) is False:
-            raise Exception("Sorry, this is an invalid coordinate (cooridnate is out of map or in the obstacles)") 
+            raise Exception("Sorry, this is an invalid coordinate (coordinate is out of map or in the obstacles)") 
         else:
-            print("Valid coordinate! Start finding the designed path...")
+            print("Valid coordinates! Start finding the designed path...")
 
         VisitedNode, path , dist = self.DistanceMap()
 

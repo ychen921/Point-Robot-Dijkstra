@@ -271,8 +271,8 @@ class PositionRobot:
 def main():    
     # Parse Command Line arguments
     Parser = argparse.ArgumentParser()
-    Parser.add_argument('--InitNode', type=str, default='10 20', help='Initial node, Default: 10 10')
-    Parser.add_argument('--GoalNode', type=str, default='200 400', help='Goal node, Default: 200, 250')
+    Parser.add_argument('--InitNode', type=str, default='10 20', help='Initial node, Default: 10_10')
+    Parser.add_argument('--GoalNode', type=str, default='200 400', help='Goal node, Default: 200_250')
 
     Args = Parser.parse_args()
     InitNode = Args.InitNode
@@ -282,8 +282,6 @@ def main():
     allNode , TrackList, DistMap = dijkstra.Solver()
 
     dijkstra.Visualization(allNode, TrackList)
-
-    
 
 if __name__ == "__main__":
     main()

@@ -76,6 +76,18 @@ class PositionRobot:
                             (x>900 and y<125 and x<1020 and y>50):
                     self.MapSpace[y,x] = [255,255,255]
 
+                self.MapFlag[0:5, :] = 1
+                self.MapSpace[0:5, :] = [255,255,255]
+
+                self.MapFlag[:, 0:5] = 1
+                self.MapSpace[:, 0:5] = [255,255,255]
+                
+                self.MapFlag[:, 1194:1200] = 1
+                self.MapSpace[:, 1194:1200] = [255,255,255]
+                
+                self.MapFlag[494:500, :] = 1
+                self.MapSpace[494:500, :] = [255,255,255]
+
         return self.MapSpace, self.MapFlag
     
     def MoveUp(self, x, y):
@@ -159,7 +171,7 @@ class PositionRobot:
         
     
     def Visualization(self, VisitedNodes, BestPath):
-        out = cv2.VideoWriter('dijkstra.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 20.0, (960,400))
+        out = cv2.VideoWriter('dijkstra.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 100.0, (960,400))
         print('\nGenerating Video...')
         for count, coord in enumerate(tqdm(VisitedNodes)):
             x, y = coord

@@ -283,5 +283,6 @@ def main():
 
     dijkstra.Visualization(allNode, TrackList)
 
+
 if __name__ == "__main__":
     main()

@@ -9,7 +9,7 @@ Solving point robot by Dijkstra's algorithm
 - argparse
 
 ## Usage
-Please set the initial and goal coordinates between x:1 to 1200 and y:1 to 500. You can use `--InitNode x_y` and --GoalNode `--GoalNode x_y` to set the start and goal Node
+Please set the initial and goal coordinates between x:1 to 1200 and y:1 to 500. You can use `--InitNode x_y` and `--GoalNode x_y` to set the start and goal Node
 
 
 Use the following command to run the code, it sets the initial node at (400, 250), and the goal node at (1200, 250)
